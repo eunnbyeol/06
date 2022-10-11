@@ -3,16 +3,37 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-int square(int a)
+int get_integer()
 {
-	return a*a;
+    int x;
+
+	printf("정수 하나를 입력하세요 :");
+	scanf("%d", &x);
+	return x;
 }
 
-int main (int argc, char *argv[]) 
+int factorial(int n)
 {
-	int a = 2;
+	int res = 1;
+	int i;
+	for (i=1; i<=n; i++)
+		res = res * i;
+	return res;
+}
+
+int combination(int n, int r)
+{
+	return( factorial(n) / factorial(n-r) / factorial(r));
+}
+
+int main(void)
+{
+	int n,r;
 	
-	square(a);
+	n = get_integer(); 
+	r = get_integer(); 
 	
-	printf("a=%i\n", a);
+	printf("%dC%d는 %d이다", n, r, combination(n,r));
+	
+	return 0;
 }
